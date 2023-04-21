@@ -1,15 +1,15 @@
 import React from 'react';
 import InventoryList from './InventoryList';
 import NewItemForm from './NewItemForm';
+import { v4 } from 'uuid';
 
 class InventoryControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisableOnPage: false,
-      newItemFormShowing: false,
-      selectedItem: null
-    }
+      formVisibleOnPage: false
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
@@ -24,7 +24,7 @@ class InventoryControl extends React.Component {
   let buttonText = null;
   if (this.state.formVisableOnPage) {
     currentlyVisableState = <NewItemForm />
-    buttonTxt = "return to Inventory List"
+    buttonText = "return to Inventory List"
   } else {
     currentlyVisableState = <InventoryList />
     buttonText = "Add Item"
