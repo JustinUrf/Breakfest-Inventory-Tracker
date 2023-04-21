@@ -12,15 +12,6 @@ class InventoryControl extends React.Component {
     }
   }
 
-  getItemById = (id, list = this.state.itemList) => {
-    return list.filter(item => item.id === id)[0];
-  };
-
-  handleClickBackToList = () => {
-    this.setState(() => ({
-      selectedItem: null,
-    }))
-  }
 
  render() {
   let currentlyVisableState = null;
