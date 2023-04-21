@@ -5,23 +5,24 @@ class InventoryControl extends React.Component {
     super(props);
     this.state = {
       newItemFormShowing: false,
-      itemList: [
-        {
-          name: 'Blacker than black Coffee',
-          origin: 'Peru',
-          price: '$4.00',
-          roast: 'dark',
-          quantity: '130'
-        }
-      ],
       selectedItem: null
     }
+  }
+
+  getItemById = (id, list = this.state.itemList) => {
+    return list.filter(item => item.id === id)[0];
+  };
+
+  handleClickBackToList = () => {
+    this.setState(() => ({
+      selectedItem: null,
+    }))
   }
 
  render() {
   return (
     <React.Fragment>
-      
+
     </React.Fragment>
   )
  }
