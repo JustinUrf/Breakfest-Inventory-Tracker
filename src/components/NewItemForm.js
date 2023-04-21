@@ -7,6 +7,7 @@ function NewItemForm(props) {
 
     function handleNewItemFormSubmission(event) {
       event.preventDefault();
+      console.log("Thi button is working right")
       props.onNewItemCreation({
         name: event.target.name.value,
         origin: event.target.origin,
