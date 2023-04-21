@@ -1,4 +1,6 @@
 import React from 'react';
+import InventoryControl from './InventoryControl';
+import Item from "./Item";
 
 const mainInventoryList = [
   {
@@ -24,7 +26,7 @@ const mainInventoryList = [
   }
 ]
 
-function InvetoryList(props) {
+function InventoryList(props) {
   return (
     <React.Fragment>
       <hr/>
@@ -38,3 +40,4 @@ function InvetoryList(props) {
     </React.Fragment>
   )
 }
+export default InventoryList;
