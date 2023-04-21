@@ -2,6 +2,7 @@ import React from 'react';
 import InventoryList from './InventoryList';
 import NewItemForm from './NewItemForm';
 import { v4 } from 'uuid';
+import ItemDetail from './ItemDetail';
 
 class InventoryControl extends React.Component {
   constructor(props) {
@@ -35,9 +36,16 @@ class InventoryControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedItem != null) {
+      this.setState({
+        formVisableOnPage: false,
+        selectedItem: null
+      })
+    } else {
+      this.setState(prevState => ({
+        formVisableOnPage: !prevState.formVisibleOnPage,
+      }))
+    }
   }
 
   handleAddingNewItemToList = (newItem) => {

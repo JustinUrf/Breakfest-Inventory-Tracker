@@ -12,13 +12,15 @@ function InventoryList(props) {
           price={item.price}
           roast={item.roast}
           quantity={item.quantity}
-          key={index}/>)}
+          id={ticket.id}
+          key={ticket.id}/>)}
     </React.Fragment>
   )
 }
 
 InventoryList.propTypes = {
-  inventoryList: PropTypes.array
+  inventoryList: PropTypes.array,
+  onTicketSelection: PropTypes.func
 }
 
 export default InventoryList;
