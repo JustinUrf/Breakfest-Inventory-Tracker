@@ -14,9 +14,17 @@ class InventoryControl extends React.Component {
           quantity: '130'
         }
       ],
-      selectedItem: null,
+      selectedItem: null
     }
   }
+
+ render() {
+  return (
+    <React.Fragment>
+      
+    </React.Fragment>
+  )
+ }
 }
 
 export default InventoryControl;
