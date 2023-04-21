@@ -31,7 +31,7 @@ function InventoryList(props) {
     <React.Fragment>
       <hr/>
       {mainInventoryList.map((item, index) =>
-        <Item names={item.name}
+        <Item name={item.name}
           origin={item.origin}
           price={item.price}
           roast={item.roast}
