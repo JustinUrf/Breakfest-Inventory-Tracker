@@ -1,6 +1,12 @@
 import React from "react";
 
 function NewItemForm(props) {
+
+    function handleNewItemFormSubmission(event) {
+      event.preventDefault();
+      console.log(event.target.name.value);
+    }
+
   return (
     <React.Fragment>
       <form onSubmit={handleNewItemFormSubmission}>
