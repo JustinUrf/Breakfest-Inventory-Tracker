@@ -1,6 +1,7 @@
 import React from 'react';
-import InventoryControl from './InventoryControl'
-import Container from 'react-bootstrap/Container'
+import InventoryControl from './InventoryControl';
+import Container from 'react-bootstrap/Container';
+import Header from './Header';
 
 function App() {
   return (
