@@ -1,16 +1,13 @@
 import React from 'react';
 import InventoryControl from './InventoryControl';
 import Item from "./Item";
-
-const mainInventoryList = [
-
-]
+import PropTypes from 'prop-types';
 
 function InventoryList(props) {
   return (
     <React.Fragment>
       <hr/>
-      {mainInventoryList.map((item, index) =>
+      {props.inventoryList.map((item, index) =>
         <Item name={item.name}
           origin={item.origin}
           price={item.price}
@@ -20,4 +17,9 @@ function InventoryList(props) {
     </React.Fragment>
   )
 }
+
+InventoryList.propTypes = {
+  inventoryList:PropTypes.array
+}
+
 export default InventoryList;
