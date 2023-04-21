@@ -7,14 +7,14 @@ function NewItemForm(props) {
 
     function handleNewItemFormSubmission(event) {
       event.preventDefault();
-      console.log("Thi button is working right")
+      console.log("This button is working right")
       props.onNewItemCreation({
         name: event.target.name.value,
         origin: event.target.origin,
         roast: event.target.roast,
         quantity: event.target.quantity,
-        id: v4()
-      })
+        id: v4(),
+      });
     }
 
   return (
@@ -40,9 +40,11 @@ function NewItemForm(props) {
           type='text'
           quantity='quantity'
           placeholder='Quantity'/>
+          <br/>
+          <button type="submit">Add a coffee</button>
       </form>
     </React.Fragment>
-  )
+  );
 }
 
 NewItemForm.propTypes = {

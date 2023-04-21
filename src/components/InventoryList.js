@@ -1,5 +1,4 @@
 import React from 'react';
-import InventoryControl from './InventoryControl';
 import Item from "./Item";
 import PropTypes from 'prop-types';
 
@@ -19,7 +18,7 @@ function InventoryList(props) {
 }
 
 InventoryList.propTypes = {
-  inventoryList:PropTypes.array
+  inventoryList: PropTypes.array
 }
 
 export default InventoryList;

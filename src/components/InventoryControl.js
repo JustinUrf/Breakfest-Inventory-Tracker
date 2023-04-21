@@ -8,6 +8,7 @@ class InventoryControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
+      selectedItem: null,
       mainItemList: [  
         {
         name: 'Blacker than black Coffee',
@@ -25,13 +26,12 @@ class InventoryControl extends React.Component {
       },
       {
         name: 'Premium Sunshine',
-        origin: 'Mississi',
+        origin: 'Mississipi',
         price: '$19.00',
         roast: 'light',
         quantity: '75'
       }]
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
@@ -40,22 +40,32 @@ class InventoryControl extends React.Component {
     }));
   }
 
-  handleAddingNewItemToLost = (newItem) => {
+  handleAddingNewItemToList = (newItem) => {
     const newMainItemList = this.state.mainItemList.concat(newItem);
     this.setState({
       mainItemList: newMainItemList,
       formVisableOnPage: false });
   }
 
+  handleChangingSelectedItem = (id) => {
+    const selectedItem = this.state.mainItemList.filter(item => item.id === id[0]);
+    this.setState({selectedItem: selectedItem });
+  }
+
 
  render() {
   let currentlyVisableState = null;
   let buttonText = null;
-  if (this.state.formVisableOnPage) {
-    currentlyVisableState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToLost}/>
+
+  if (this.state.selectedItem != null) {
+    currentlyVisableState = <ItemDetail item = {this.state.selectedItem} />
+    buttonText = "Return Item List"
+  }
+  else if (this.state.formVisableOnPage) {
+    currentlyVisableState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
     buttonText = "return to Inventory List"
   } else {
-    currentlyVisableState = <InventoryList inventoryList={this.state.mainItemList} />
+    currentlyVisableState = <InventoryList inventoryList={this.state.mainItemList} onItemSelection={this.handleChangingSelectedItem} />
     buttonText = "Add Item"
   }
   return (
