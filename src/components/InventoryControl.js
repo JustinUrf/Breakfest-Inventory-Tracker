@@ -40,12 +40,19 @@ class InventoryControl extends React.Component {
     }));
   }
 
+  handleAddingNewItemToLost = (newItem) => {
+    const newMainItemList = this.state.mainItemList.concat(newItem);
+    this.setState({
+      mainItemList: newMainItemList,
+      formVisableOnPage: false });
+  }
+
 
  render() {
   let currentlyVisableState = null;
   let buttonText = null;
   if (this.state.formVisableOnPage) {
-    currentlyVisableState = <NewItemForm />
+    currentlyVisableState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToLost}/>
     buttonText = "return to Inventory List"
   } else {
     currentlyVisableState = <InventoryList inventoryList={this.state.mainItemList} />

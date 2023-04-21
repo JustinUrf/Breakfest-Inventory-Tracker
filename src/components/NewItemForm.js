@@ -1,10 +1,19 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { v4 } from "uuid";
+
 
 function NewItemForm(props) {
 
     function handleNewItemFormSubmission(event) {
       event.preventDefault();
-      console.log(event.target.name.value);
+      props.onNewItemCreation({
+        name: event.target.name.value,
+        origin: event.target.origin,
+        roast: event.target.roast,
+        quantity: event.target.quantity,
+        id: v4()
+      })
     }
 
   return (
@@ -24,12 +33,19 @@ function NewItemForm(props) {
           placeholder='Price'/>
           <input
           type='text'
-          roast='Roast'
-          quantity='Quantity'/>
-
+          roast='roast'
+          placeholder='Roast'/>
+          <input
+          type='text'
+          quantity='quantity'
+          placeholder='Quantity'/>
       </form>
     </React.Fragment>
   )
 }
+
+NewItemForm.propTypes = {
+  onNewItemCreation:PropTypes.func
+};
 
 export default NewItemForm;
