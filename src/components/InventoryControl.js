@@ -3,6 +3,8 @@ import InventoryList from './InventoryList';
 import NewItemForm from './NewItemForm';
 import { v4 } from 'uuid';
 import ItemDetail from './ItemDetail';
+import EditItemForm from './EditItemForm';
+
 
 class InventoryControl extends React.Component {
   constructor(props) {
@@ -10,6 +12,7 @@ class InventoryControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       selectedItem: null,
+      editing: false,
       mainItemList: [  
         {
         name: 'Blacker than black Coffee',
@@ -26,14 +29,17 @@ class InventoryControl extends React.Component {
     if (this.state.selectedItem != null) {
       this.setState({
         formVisableOnPage: false,
-        selectedItem: null
+        selectedItem: null,
+        editing: false
       })
     } else {
-      this.setState(prevState => ({
-        formVisableOnPage: !prevState.formVisibleOnPage
-      }));
-    }
+        this.setState(prevState => ({
+          formVisableOnPage: !prevState.formVisableOnPage
+        }));
+      }
   }
+
+  
 
   handleAddingNewItemToList = (newItem) => {
     const newMainItemList = this.state.mainItemList.concat(newItem);
@@ -55,13 +61,27 @@ class InventoryControl extends React.Component {
     });
   }
 
+  handleEditClick = () => {
+    console.log("handleEditClick reached!");
+    this.setState({editing: true});
+  }
+
+  handleEditingItemInList = (itemToEdit) => {
+    const editedMainItemList = this.state.mainItemList.filter(item => item.id !== this.state.selectedItem.id).concat(itemToEdit)
+    this.setState({
+      mainItemList: editedMainItemList,
+      editing: false,
+      selectedItem:null
+    });
+  }
+
 
  render() {
   let currentlyVisableState = null;
   let buttonText = null;
 
   if (this.state.selectedItem != null) {
-    currentlyVisableState = <ItemDetail item = {this.state.selectedItem} onClickDelete = {this.handleDeleteItem}/>
+    currentlyVisableState = <ItemDetail item = {this.state.selectedItem} onClickDelete = {this.handleDeleteItem} onClickingEdit = {this.handleEditClick}/>
     buttonText = "Return Item List"
   }
   else if (this.state.formVisableOnPage) {
