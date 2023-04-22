@@ -43,7 +43,7 @@ class InventoryControl extends React.Component {
       })
     } else {
       this.setState(prevState => ({
-        formVisableOnPage: !prevState.formVisibleOnPage,
+        formVisableOnPage: !prevState.formVisibleOnPage
       }));
     }
   }
@@ -56,7 +56,7 @@ class InventoryControl extends React.Component {
   }
 
   handleChangingSelectedItem = (id) => {
-    const selectedItem = this.state.mainItemList.filter(item => item.id === id[0]);
+    const selectedItem = this.state.mainItemList.filter(item => item.id === id)[0];
     this.setState({selectedItem: selectedItem });
   }
 
