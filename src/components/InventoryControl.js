@@ -44,7 +44,7 @@ class InventoryControl extends React.Component {
     } else {
       this.setState(prevState => ({
         formVisableOnPage: !prevState.formVisibleOnPage,
-      }))
+      }));
     }
   }
 

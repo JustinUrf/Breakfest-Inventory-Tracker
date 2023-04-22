@@ -1,12 +1,13 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function ItemDetail(props){
-
   const { item } = props;
+
   return (
     <React.Fragment>
       <h1> Item Detail </h1>
-      <h3>  {item.name} </h3>
+      <h3>  {item.name} - {item.price}</h3>
       <hr/>
     </React.Fragment>
   )
@@ -14,6 +15,6 @@ function ItemDetail(props){
 
 ItemDetail.propTypes = {
   item: PropTypes.object
-}
+};
 
 export default ItemDetail;
