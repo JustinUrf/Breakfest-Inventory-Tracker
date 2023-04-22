@@ -18,20 +18,7 @@ class InventoryControl extends React.Component {
         roast: 'dark',
         quantity: '130'
       },
-      {
-        name: 'Nice Tan Coffee',
-        origin: 'Columbia',
-        price: '$6.00',
-        roast: 'medium',
-        quantity: '50'
-      },
-      {
-        name: 'Premium Sunshine',
-        origin: 'Mississipi',
-        price: '$19.00',
-        roast: 'light',
-        quantity: '75'
-      }]
+      ]
     };
   }
 
@@ -60,13 +47,21 @@ class InventoryControl extends React.Component {
     this.setState({selectedItem: selectedItem });
   }
 
+  handleDeleteItem = (id) => {
+    const newMainItemList = this.state.mainItemList.filter(ticket => ticket.id !== id);
+    this.setState({
+      mainItemList: newMainItemList,
+      selectedItem: null
+    });
+  }
+
 
  render() {
   let currentlyVisableState = null;
   let buttonText = null;
 
   if (this.state.selectedItem != null) {
-    currentlyVisableState = <ItemDetail item = {this.state.selectedItem} />
+    currentlyVisableState = <ItemDetail item = {this.state.selectedItem} onClickDelete = {this.handleDeleteItem}/>
     buttonText = "Return Item List"
   }
   else if (this.state.formVisableOnPage) {

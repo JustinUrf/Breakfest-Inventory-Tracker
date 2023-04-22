@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { v4 } from "uuid";
+import ReusableForm from "./ReusableForm"
 
 
 function NewItemForm(props) {
@@ -19,30 +20,8 @@ function NewItemForm(props) {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleNewItemFormSubmission}>
-        <input
-          type='text'
-          name='name'
-          placeholder='Pair names'/>
-          <input
-          type='text'
-          origin='origin'
-          placeholderr='Origin'/>
-          <input
-          type='text'
-          price='price'
-          placeholder='Price'/>
-          <input
-          type='text'
-          roast='roast'
-          placeholder='Roast'/>
-          <input
-          type='text'
-          quantity='quantity'
-          placeholder='Quantity'/>
-          <br/>
-          <button type="submit">Add a coffee</button>
-      </form>
+      <ReusableForm
+        formSubmissionHandler={handleNewItemFormSubmission} buttonText="Add a new coffee"/>
     </React.Fragment>
   );
 }
