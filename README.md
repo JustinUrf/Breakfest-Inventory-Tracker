@@ -100,6 +100,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## Known Bugs
 
 * App functionality is currently very limited due to static-only state being utilized.
+* Little to no CSS styling, no visual indicator to click on items to pull up new screens.
 
 ## License
 
