@@ -15,7 +15,7 @@
 * Babel
 * Bootstrap
 ## Mockup
-![mockup}(/IMG_0860.HEIC)
+![mockup}(/MockUpS.png)
 
 ## Component Diagram
 ```
