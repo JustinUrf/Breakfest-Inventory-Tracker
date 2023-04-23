@@ -23,7 +23,7 @@ Item.propTypes = {
   origin: PropTypes.string,
   price: PropTypes.string,
   roast: PropTypes.string,
-  quantity: PropTypes.string,
+  quantity: PropTypes.number,
   id: PropTypes.string, 
   whenItemClicked: PropTypes.func,
 }

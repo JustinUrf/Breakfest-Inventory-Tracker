@@ -2,7 +2,7 @@ import React from 'react';
 import Item from "./Item";
 import PropTypes from 'prop-types';
 
-function InventoryList(props) {
+const InventoryList = (props) => {
   return (
     <React.Fragment>
       <hr/>

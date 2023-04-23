@@ -8,12 +8,12 @@ function NewItemForm(props) {
 
     function handleNewItemFormSubmission(event) {
       event.preventDefault();
-      console.log("This button is working right")
+
       props.onNewItemCreation({
         name: event.target.name.value,
         origin: event.target.origin,
         roast: event.target.roast,
-        quantity: event.target.quantity,
+        quantity: event.target.quantity.value || 0,
         id: v4(),
       });
     }

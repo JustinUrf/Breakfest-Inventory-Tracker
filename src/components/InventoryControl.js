@@ -19,7 +19,8 @@ class InventoryControl extends React.Component {
         origin: 'Peru',
         price: '$4.00',
         roast: 'dark',
-        quantity: '130'
+        quantity: 130,
+        id: v4()
       },
       ]
     };
@@ -30,7 +31,6 @@ class InventoryControl extends React.Component {
       this.setState({
         formVisableOnPage: false,
         selectedItem: null,
-        editing: false
       })
     } else {
         this.setState(prevState => ({
@@ -38,8 +38,6 @@ class InventoryControl extends React.Component {
         }));
       }
   }
-
-  
 
   handleAddingNewItemToList = (newItem) => {
     const newMainItemList = this.state.mainItemList.concat(newItem);
@@ -62,7 +60,6 @@ class InventoryControl extends React.Component {
   }
 
   handleEditClick = () => {
-    console.log("handleEditClick reached!");
     this.setState({editing: true});
   }
 
@@ -75,13 +72,30 @@ class InventoryControl extends React.Component {
     });
   }
 
+  handleItemSold = () => {
+    if(this.state.selectedItem.quantity <= 0) {
+      return;
+    } else {
+      const newSelectedItem = {...this.state.selectedItem, quantity: this.state.selectedItem.quantity -1};
+      const editedMainItemList = this.state.mainItemList.filter(item => item.id !== this.state.selectedItem.id).concat(newSelectedItem);
+      this.setState({selectedItem: newSelectedItem, mainItemList: editedMainItemList});
+    }
+  }
 
  render() {
+
   let currentlyVisableState = null;
   let buttonText = null;
 
-  if (this.state.selectedItem != null) {
-    currentlyVisableState = <ItemDetail item = {this.state.selectedItem} onClickDelete = {this.handleDeleteItem} onClickingEdit = {this.handleEditClick}/>
+
+  if(this.state.editing) {
+    currentlyVisableState = <EditItemForm
+      item={this.state.selectedItem}
+      onEditItem={this.handleEditingItemInList} />
+    buttonText="Return to Inventory List"
+  }
+  else if (this.state.selectedItem != null) {
+    currentlyVisableState = <ItemDetail item = {this.state.selectedItem} onClickDelete = {this.handleDeleteItem} onClickEdit = {this.handleEditClick} onClickUnitSold={this.handleItemSold}/>
     buttonText = "Return Item List"
   }
   else if (this.state.formVisableOnPage) {
