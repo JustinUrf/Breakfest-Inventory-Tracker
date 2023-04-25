@@ -29,12 +29,12 @@ class InventoryControl extends React.Component {
   handleClick = () => {
     if (this.state.selectedItem != null) {
       this.setState({
-        formVisableOnPage: false,
+        formVisibleOnPage: false,
         selectedItem: null,
       })
     } else {
         this.setState(prevState => ({
-          formVisableOnPage: !prevState.formVisableOnPage
+          formVisibleOnPage: !prevState.formVisibleOnPage
         }));
       }
   }
@@ -43,7 +43,7 @@ class InventoryControl extends React.Component {
     const newMainItemList = this.state.mainItemList.concat(newItem);
     this.setState({
       mainItemList: newMainItemList,
-      formVisableOnPage: false });
+      formVisibleOnPage: false });
   }
 
   handleChangingSelectedItem = (id) => {
@@ -84,30 +84,30 @@ class InventoryControl extends React.Component {
 
  render() {
 
-  let currentlyVisableState = null;
+  let currentlyVisibleState = null;
   let buttonText = null;
 
 
   if(this.state.editing) {
-    currentlyVisableState = <EditItemForm
+    currentlyVisibleState = <EditItemForm
       item={this.state.selectedItem}
       onEditItem={this.handleEditingItemInList} />
     buttonText="Return to Inventory List"
   }
   else if (this.state.selectedItem != null) {
-    currentlyVisableState = <ItemDetail item = {this.state.selectedItem} onClickDelete = {this.handleDeleteItem} onClickEdit = {this.handleEditClick} onClickUnitSold={this.handleItemSold}/>
+    currentlyVisibleState = <ItemDetail item = {this.state.selectedItem} onClickDelete = {this.handleDeleteItem} onClickEdit = {this.handleEditClick} onClickUnitSold={this.handleItemSold}/>
     buttonText = "Return Item List"
   }
-  else if (this.state.formVisableOnPage) {
-    currentlyVisableState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
-    buttonText = "return to Inventory List"
+  else if (this.state.formVisibleOnPage) {
+    currentlyVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
+    buttonText = "Return to Inventory List"
   } else {
-    currentlyVisableState = <InventoryList inventoryList={this.state.mainItemList} onItemSelection={this.handleChangingSelectedItem} />
+    currentlyVisibleState = <InventoryList inventoryList={this.state.mainItemList} onItemSelection={this.handleChangingSelectedItem} />
     buttonText = "Add Item"
   }
   return (
     <React.Fragment>
-      {currentlyVisableState}
+      {currentlyVisibleState}
       <button onClick={this.handleClick}>{buttonText}</button>
     </React.Fragment>
   )
