@@ -8,12 +8,12 @@ function NewItemForm(props) {
 
     function handleNewItemFormSubmission(event) {
       event.preventDefault();
-
       props.onNewItemCreation({
-        name: event.target.name.value,
-        origin: event.target.origin,
-        roast: event.target.roast,
-        quantity: event.target.quantity.value || 0,
+        name: event.target.name.value || "No Name",
+        origin: event.target.location.value || "No Location",
+        price:  event.target.price.value || "$10$",
+        roast: event.target.roast.value || "No roast given",
+        quantity: parseInt(event.target.quantity.value) || 10,
         id: v4(),
       });
     }
@@ -21,7 +21,8 @@ function NewItemForm(props) {
   return (
     <React.Fragment>
       <ReusableForm
-        formSubmissionHandler={handleNewItemFormSubmission} buttonText="Add a new coffee"/>
+        formSubmissionHandler={handleNewItemFormSubmission} 
+        buttonText="Add a new coffee"/>
     </React.Fragment>
   );
 }

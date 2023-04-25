@@ -4,6 +4,7 @@ import NewItemForm from './NewItemForm';
 import { v4 } from 'uuid';
 import ItemDetail from './ItemDetail';
 import EditItemForm from './EditItemForm';
+import PropTypes from "prop-types";
 
 
 class InventoryControl extends React.Component {
@@ -95,7 +96,11 @@ class InventoryControl extends React.Component {
     buttonText="Return to Inventory List"
   }
   else if (this.state.selectedItem != null) {
-    currentlyVisibleState = <ItemDetail item = {this.state.selectedItem} onClickDelete = {this.handleDeleteItem} onClickEdit = {this.handleEditClick} onClickUnitSold={this.handleItemSold}/>
+    currentlyVisibleState = <ItemDetail 
+      item = {this.state.selectedItem} 
+      onClickDelete = {this.handleDeleteItem} 
+      onClickEdit = {this.handleEditClick} 
+      onClickUnitSold={this.handleItemSold}/>
     buttonText = "Return Item List"
   }
   else if (this.state.formVisibleOnPage) {
@@ -113,5 +118,9 @@ class InventoryControl extends React.Component {
   )
  }
 }
+
+InventoryControl.propTypes = {
+  newMainItemList: PropTypes.object
+};
 
 export default InventoryControl;
